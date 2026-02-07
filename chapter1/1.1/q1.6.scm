@@ -2,6 +2,8 @@
     (cond (predicate then-clause)
     (else else-clause)))
 
+(define (square x) (* x x))
+
 (define (good-enough? guess x)
     (< (abs (- (square guess) x)) 0.001))
 
