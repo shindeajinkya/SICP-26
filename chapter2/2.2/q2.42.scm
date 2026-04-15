@@ -65,4 +65,47 @@
   (queen-cols board-size)
 )
 
-(display (length (queens 8)))
+(define (remove item sequence)
+  (filter (lambda (x) (not (= x item)))
+          sequence))
+
+(define (permutations s)
+	(if 
+		(null? s) ; empty set?
+		(list (list)) ; sequence containing empty set
+		(flatmap 
+			(lambda (x)
+				(map 
+					(lambda (p) (begin
+						;(newline)
+						;(display p)
+						(cons x p)
+					))
+					(begin 
+						(display (remove x s))
+						(newline)
+						(permutations (remove x s))
+					)
+				)
+			)
+			s
+		)
+	)
+)
+
+(display 
+	(length (flatmap 
+		(lambda (i)
+			(map 
+				(lambda (j) (list i j))
+				(enumerate-interval 1 (- i 1))
+			)
+		)
+		(enumerate-interval 0 6)
+	))
+)
+
+(newline)
+(display (remove 1 (list 1 2 3)))
+(newline)
+(display (permutations (list 1 2 3)))
