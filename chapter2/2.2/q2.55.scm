@@ -1,0 +1,2 @@
+(car ''abracadabra) ; -> quote
+; this returns 'quote' just because we use only single ' to define symbols and anything after it is a symbol, and it must be creating nested list like (quote (quote abracadabra))
